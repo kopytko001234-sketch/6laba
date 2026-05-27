@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Царский Никита Сергеевич">
+    <meta name="keywords" content="HTML, CSS, JavaScript, Таблица, DOM">
+    <meta name="description" content="Лабораторная работа 6 - Расчет суммы в таблице">
+    <link rel="stylesheet" href="style.css">
+    <title>Мой первый простой сайт - Расчет таблицы</title>
+    
+    <script type="text/javascript">
+        function cols() {
+            // Находим таблицу по её id
+            var tbl = document.getElementById('tbl1');
+            
+            // Получаем все строки таблицы (теги tr)
+            var rows = tbl.getElementsByTagName('tr');
+            
+            // Проходим циклом по всем строкам (начиная с 1, так как строка 0 — это шапка)
+            for (var i = 1; i < rows.length; i++) {
+                // Получаем все ячейки (td) текущей строки
+                var cells = rows[i].getElementsByTagName('td');
+                var sum = 0;
+                
+                // Суммируем данные из столбцов с 1-го по 4-й (индексы ячеек от 1 до 4)
+                // Столбец 0 — это номер строки, столбец 5 — это ячейка для суммы
+                for (var j = 1; j <= 4; j++) {
+                    var cellValue = cells[j].innerHTML.trim();
+                    
+                    // Преобразуем текст в число. Если там пусто или не число, используем 0
+                    var num = parseInt(cellValue);
+                    if (!isNaN(num)) {
+                        sum += num;
+                    }
+                }
+                
+                // Записываем полученную сумму в последний столбец (индекс 5)
+                cells[5].innerHTML = '<b>' + sum + '</b>';
+                
+                // Проверяем четность суммы и красим всю строку
+                if (sum % 2 === 0) {
+                    rows[i].style.backgroundColor = 'gray';
+                    rows[i].style.color = '#fff'; // белый текст для читаемости на сером
+                } else {
+                    rows[i].style.backgroundColor = '#add8e6'; // светло-голубой цвет (LightBlue)
+                    rows[i].style.color = '#222'; // темный текст
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="main">
+        <div id="header">
+            <h1><a href="index.html">Мой первый сайт</a></h1>
+        </div>
+ 
+        <div id="content">
+            <div id="left">
+                <h2>Навигация</h2>
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="news.html">Новости</a></li>
+                    <li><a href="contacts.html">Контакты</a></li>
+                    <li><a href="secret.html">Секрет</a></li>
+                    <li><a href="calc.html">Калькулятор</a></li>
+                    <li><a href="history.html">История JS</a></li>
+                    <li><a href="lorem.html">Спойлер</a></li>
+                    <li><a href="table.html">Таблица</a></li>
+                </ul>
+                <h2>Ссылки</h2>
+                <ul>
+                    <li><a href="https://yandex.ru" target="_blank">Яндекс</a></li>
+                    <li><a href="https://google.com" target="_blank">Google</a></li>
+                </ul>
+                <h2>Авторизация</h2>
+                <form action="index.html" method="post">
+                    Пользователь:
+                    <div align="right"><input name="login" type="text"></div>
+                    Пароль:
+                    <div align="right"><input name="pwd" type="password"></div>
+                    <div align="right"><input name="ok" type="submit" value="Войти"></div>
+                </form>
+            </div>
+ 
+            <div id="right">
+                <h2>Обработка числовых данных в таблице</h2>
+                
+                <table id="tbl1" border="1" cellpadding="8" style="width: 100%; border-collapse: collapse; margin-bottom: 20px; text-align: center; border: 1px solid #2a79bc;">
+                    <thead style="background-color: #2a79bc; color: white;">
+                        <tr>
+                            <th>№</th>
+                            <th>Столбец 1</th>
+                            <th>Столбец 2</th>
+                            <th>Столбец 3</th>
+                            <th>Столбец 4</th>
+                            <th>Сумма</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>4</td>
+                            <td> </td>
+                            <td>3</td>
+                            <td> </td>
+                            <td> </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td> </td>
+                            <td>3</td>
+                            <td>1</td>
+                            <td> </td>
+                            <td> </td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td> </td>
+                            <td>4</td>
+                            <td>5</td>
+                            <td> </td>
+                            <td> </td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>1</td>
+                            <td>2</td>
+                            <td> </td>
+                            <td> </td>
+                            <td> </td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>1</td>
+                            <td>3</td>
+                            <td> </td>
+                            <td> </td>
+                            <td> </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div style="margin-top: 15px;">
+                    <input type="button" value="Посчитать суммы строк" onclick="cols()" style="padding: 10px 20px; font-weight: bold; cursor: pointer; background-color: #2a79bc; color: #fff; border: none; border-radius: 4px; width: 100%;">
+                </div>
+
+            </div>
+            <div style="clear: both;"></div>
+        </div>
+ 
+        <div id="footer">&copy; Царский Никита Сергеевич</div>
+    </div>
+</body>
+</html>
