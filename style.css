@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
 }
+
 body {
     background: #fff;
     font-family: Verdana, Arial;
@@ -9,45 +10,55 @@ body {
     line-height: 20px;
     color: #222;
 }
+
 #main {
     margin: 20px auto;
     width: 800px;
 }
+
 #header {
     height: 90px;
     background: #2a79bc url(styles/images/header.png) no-repeat;
 }
+
 #header h1 {
     font-size: 28px;
     letter-spacing: -1px;
     padding: 20px 0 0 20px;
     color: #FF5500;
 }
+
 #header h1 a {
     color: #fff;
     text-decoration: none;
     font-weight: 100;
     letter-spacing: 2px;
 }
+
 #header h1 a:hover {
     color: #111;
 }
+
 a {
     text-decoration: none;
     color: #4682B4;
 }
+
 a:hover {
     text-decoration: underline;
     color: #2a52be;
 }
+
 #content {
     padding: 0px 0 0 0px;
 }
+
 #left {
     float: left;
     width: 180px;
     padding-top: 10px;
 }
+
 #left h2 {
     margin: 10px 0 0 0;
     padding-left: 10px;
@@ -57,30 +68,36 @@ a:hover {
     color: #fff;
     font-size: 13px;
 }
+
 #left ul {
     padding: 10px 0 15px 10px;
     list-style-type: square;
     color: #2979BD;
     padding-left: 30px;
 }
+
 #left ul li a {
     text-decoration: none;
     font-weight: 600;
 }
+
 #right {
     float: right;
     width: 590px;
     text-align: justify;
     padding-top: 5px;
 }
+
 #right h2 {
     font-size: 18px;
     font-weight: 100;
     padding: 15px 0 7px 0;
 }
+
 #right h2 a {
     text-decoration: none;
 }
+
 #footer {
     text-align: center;
     font-size: 11px;
@@ -88,6 +105,45 @@ a:hover {
     margin-top: 20px;
     border-top: 1px dotted #0047ab;
 }
+
 #footer a {
     color: #0047ab;
+}
+
+/* Класс для раскрашивания нечетных абзацев текста в серый цвет */
+.color {
+    background-color: gray;
+    color: #fff; /* Белый текст для читаемости на сером фоне */
+    padding: 5px 10px;
+    border-radius: 4px;
+}
+
+/* Стиль главного контейнера для блока со спойлером */
+#wrapper {
+    margin: 0px auto;
+}
+
+/* Стиль самого скрытого блока спойлера */
+#spoyler {
+    font: 11px Verdana, Geneva, sans-serif;
+    background: #e0e0e0; /* Светло-серый фон, подходящий под дизайн */
+    padding: 10px;
+    border: 1px solid #2a79bc;
+    margin: 10px 0 10px 20px;
+    display: none; /* По умолчанию скрыт */
+    text-align: justify;
+    border-radius: 4px;
+    color: #222;
+}
+
+/* Стиль маленькой квадратной кнопки [+] / [-] внутри блока wrapper */
+#wrapper input {
+    font-size: 11px;
+    height: 18px;
+    width: 18px;
+    padding: 0px;
+    cursor: pointer;
+    font-weight: bold;
+    text-align: center;
+    line-height: 14px;
 }
