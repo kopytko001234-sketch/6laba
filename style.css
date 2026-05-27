@@ -110,33 +110,33 @@ a:hover {
     color: #0047ab;
 }
 
-/* Класс для раскрашивания нечетных абзацев текста в серый цвет */
+/* ==========================================================================
+   СТИЛИ ДЛЯ 6-Й ЛАБОРАТОРНОЙ РАБОТЫ (ИСТОРИЯ JS, ТЕМЫ И СПОЙЛЕР)
+   ========================================================================== */
+
 .color {
     background-color: gray;
-    color: #fff; /* Белый текст для читаемости на сером фоне */
+    color: #fff;
     padding: 5px 10px;
     border-radius: 4px;
 }
 
-/* Стиль главного контейнера для блока со спойлером */
 #wrapper {
     margin: 0px auto;
 }
 
-/* Стиль самого скрытого блока спойлера */
 #spoyler {
     font: 11px Verdana, Geneva, sans-serif;
-    background: #e0e0e0; /* Светло-серый фон, подходящий под дизайн */
+    background: #e0e0e0;
     padding: 10px;
     border: 1px solid #2a79bc;
     margin: 10px 0 10px 20px;
-    display: none; /* По умолчанию скрыт */
+    display: none;
     text-align: justify;
     border-radius: 4px;
     color: #222;
 }
 
-/* Стиль маленькой квадратной кнопки [+] / [-] внутри блока wrapper */
 #wrapper input {
     font-size: 11px;
     height: 18px;
@@ -146,4 +146,62 @@ a:hover {
     font-weight: bold;
     text-align: center;
     line-height: 14px;
+}
+
+/* ==========================================================================
+   СТИЛИ ДЛЯ МОДАЛЬНОГО ОКНА РЕГИСТРАЦИИ (ЗАДАНИЕ 5)
+   ========================================================================== */
+
+/* Стили для блока перекрытия */
+#modal {
+    background-color: rgba(0, 0, 0, 0.6); /* Темный полупрозрачный фон для стильного контраста */
+    height: 100%;
+    width: 100%;
+    position: fixed; /* Чтобы фиксировалось при скролле */
+    top: 0;
+    left: 0;
+    display: none; /* По умолчанию скрыто */
+    z-index: 9999; /* Поверх всех элементов сайта */
+}
+
+/* Стили для формы внутри блока перекрытия */
+#modal form {
+    margin: 150px auto 0px;
+    padding: 20px;
+    width: 280px;
+    background: #2a79bc; /* Перекрасил в цвет темы твоего сайта вместо фиолетового #609 */
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    color: #fff;
+    font-family: Verdana;
+}
+
+#modal form input[type="text"],
+#modal form input[type="password"] {
+    width: 90%;
+    padding: 5px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    border: 1px solid #fff;
+    outline: none;
+}
+
+/* Класс для кнопок */
+.button {
+    width: 100px;
+    text-align: center;
+    padding: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    background: #fff;
+    color: #2a79bc;
+    border: none;
+    border-radius: 4px;
+    margin: 5px;
+}
+
+.button:hover {
+    background: #f0f0f0;
 }
