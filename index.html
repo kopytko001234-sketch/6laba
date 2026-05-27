@@ -8,6 +8,28 @@
     <meta name="description" content="Работа каскадных таблиц">
     <link rel="stylesheet" href="style.css">
     <title>Мой первый простой сайт</title>
+
+    <script type="text/javascript">
+        function colors() {
+            // Получаем элемент списка с именем D1 и берем первый из них
+            var color = document.getElementsByName('D1')[0];
+            
+            // С помощью стиля меняем цвет фона страницы на выбранный в списке
+            document.body.style.backgroundColor = color.value;
+            
+            // Получаем массив всех элементов option списка
+            var opt = document.getElementsByTagName('option');
+            
+            // Получаем текст элемента массива с номером, выбранным в списке
+            var text = opt[color.selectedIndex].innerHTML;
+            
+            // Получаем ссылку на первый элемент в массиве заголовков h3
+            var h3 = document.getElementsByTagName('h3')[0];
+            
+            // В заголовке показываем новый цвет фона / тему
+            h3.innerHTML = 'Текущий цвет: ' + text;
+        }
+    </script>
 </head>
 <body>
     <div id="main">
@@ -42,6 +64,28 @@
  
             <div id="right">
                 <h2>Главная</h2>
+
+                <div style="background: rgba(255,255,255,0.2); padding: 10px; border-radius: 5px; margin-bottom: 15px; border: 1px dotted #2a79bc;">
+                    <table width="100%" border="0" style="border-collapse: collapse;">
+                        <tr>
+                            <td>
+                                <h3 style="margin: 0; padding: 0;">Текущий цвет: Стандартная</h3>
+                            </td>
+                            <td align="right">
+                                <select name="D1" onchange="colors()" style="padding: 4px; font-family: Verdana; font-size: 12px; cursor: pointer;">
+                                    <option value="#ffffff" selected>Стандартная</option>
+                                    <option value="#FFAAA4">красный</option>
+                                    <option value="#82FFA2">зеленый</option>
+                                    <option value="#91C8FF">голубой</option>
+                                    <option value="#FFFFBB">желтый</option>
+                                    <option value="#f5f5f5">Светлая</option>
+                                    <option value="#333333">Темная</option>
+                                </select>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
                 <p><b>Главная страница</b> — самая первая страница, которая появляется при заходе на сайт.</p>
                 <p>Главная страница есть у всех сайтов, от солидных интернет-магазинов до популярных форумов. Основная функция главной страницы – это привлечение внимания целевой аудитории и конвертации пользователей в реальных клиентов.</p>
                 <p>В Рунете главную страницу часто называют «мордой». Данный термин прочно вошел в обиход ввиду своей ясности и краткости. Главную страницу можно именовать и «хомяком». Происхождение этого определения может быть объяснено искаженным произношением английского «home page», или «домашняя страница». Впоследствии вторая часть словосочетания «page» отсеялась, и «home» превратился в «хомяка».</p>
