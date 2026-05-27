@@ -10,11 +10,9 @@
     <title>Мой первый простой сайт - История JS</title>
     
     <script type="text/javascript">
+        // Функция форматирования текста (Задание 2)
         function format() {
-            // Получаем массив радиокнопок с именем R1
             var rad = document.getElementsByName('R1');
-            
-            // Переменная для хранения номера выбранной задачи
             var selectedTask = 0;
             for (var i = 0; i < rad.length; i++) {
                 if (rad[i].checked) {
@@ -23,21 +21,17 @@
                 }
             }
             
-            // Выполняем действие в зависимости от выбранной радиокнопки
             if (selectedTask == "1") {
-                // 1-я задача: все нечетные абзацы текста окрасить серым цветом (через CSS-класс .color)
                 var paragraphs = document.getElementById('text-block').getElementsByTagName('p');
                 for (var j = 0; j < paragraphs.length; j++) {
-                    // j+1 — это порядковый номер абзаца (1-й, 2-й, 3-й...)
                     if ((j + 1) % 2 !== 0) {
                         paragraphs[j].className = "color";
                     } else {
-                        paragraphs[j].className = ""; // сброс у четных
+                        paragraphs[j].className = "";
                     }
                 }
             } 
             else if (selectedTask == "2") {
-                // 2-я задача: первые строки (элементы) каждого списка сделать размером в 28 px
                 var lists = document.getElementById('text-block').getElementsByTagName('ul');
                 for (var k = 0; k < lists.length; k++) {
                     var firstItem = lists[k].getElementsByTagName('li')[0];
@@ -47,10 +41,8 @@
                 }
             } 
             else if (selectedTask == "3") {
-                // 3-я задача: все нечетные элементы списков взять в рамку красного цвета
                 var items = document.getElementById('text-block').getElementsByTagName('li');
                 for (var m = 0; m < items.length; m++) {
-                    // m+1 — порядковый номер элемента (1-й, 2-й, 3-й...)
                     if ((m + 1) % 2 !== 0) {
                         items[m].style.border = "2px solid red";
                         items[m].style.padding = "2px 5px";
@@ -60,10 +52,9 @@
                 }
             } 
             else if (selectedTask == "4") {
-                // 4-я задача: содержимое тега span заменить на текст из диалога и раскрасить синим
                 var spans = document.getElementById('text-block').getElementsByTagName('span');
                 if (spans.length > 0) {
-                    var userText = prompt('Введите текст для замены внутри span:', 'JS / DOM');
+                    var userText = prompt('Введите text для замены внутри span:', 'JS / DOM');
                     if (userText !== null) {
                         for (var n = 0; n < spans.length; n++) {
                             spans[n].innerHTML = userText;
@@ -71,9 +62,28 @@
                             spans[n].style.fontWeight = "bold";
                         }
                     }
-                } else {
-                    alert('Теги span не найдены в тексте!');
                 }
+            }
+        }
+
+        // Новая функция добавления пункта в последний список (Задание 3)
+        function append() {
+            // Запрашиваем у пользователя текст для нового пункта
+            var itemText = prompt("Введите название нового пункта списка:", "Новая манипуляция");
+            
+            // Если пользователь не нажал "Отмена" и ввёл текст
+            if (itemText !== null && itemText.trim() !== "") {
+                // Находим четвертый ul на странице (индекс 3)
+                var ul = document.getElementsByTagName('ul')[3];
+                
+                // Создаем новый элемент тега li
+                var li = document.createElement('li');
+                
+                // Записываем текст внутрь созданного li
+                li.innerHTML = itemText;
+                
+                // Добавляем li в самый конец списка ul
+                ul.appendChild(li);
             }
         }
     </script>
@@ -110,7 +120,7 @@
                 </form>
             </div>
  
-<div id="right">
+            <div id="right">
                 <h2>История JavaScript и DOM</h2>
                 
                 <div id="text-block">
@@ -151,9 +161,17 @@
                     <p style="margin-bottom: 5px;"><input type="radio" name="R1" value="4"> 4-я задача (Заменить текст в span из диалога и сделать синим)</p>
                     
                     <div style="margin-top: 15px;">
-                        <input type="button" value="Выполнить форматирование" onclick="format()" style="padding: 7px 15px; font-weight: bold; cursor: pointer; background-color: #2a79bc; color: #fff; border: none; border-radius: 4px;">
+                        <input type="button" value="Выполнить форматирование" onclick="format()" style="padding: 7px 15px; font-weight: bold; cursor: pointer; background-color: #2a79bc; color: #fff; border: none; border-radius: 4px; margin-right: 10px;">
                     </div>
                 </form>
+
+                <hr style="margin: 20px 0; border: none; border-top: 1px dotted #2a79bc;">
+
+                <h3>Управление элементами списка:</h3>
+                <div style="margin-top: 10px;">
+                    <input type="button" value="Добавить пункт в список" onclick="append()" style="padding: 7px 15px; font-weight: bold; cursor: pointer; background-color: #4682B4; color: #fff; border: none; border-radius: 4px; width: 100%;">
+                </div>
+
             </div>
             <div style="clear: both;"></div>
         </div>
