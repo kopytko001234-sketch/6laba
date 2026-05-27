@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Царский Никита Сергеевич">
+    <meta name="keywords" content="HTML, CSS, JavaScript, DOM, История">
+    <meta name="description" content="Лабораторная работа 6 - Манипуляции с текстом">
+    <link rel="stylesheet" href="style.css">
+    <title>Мой первый простой сайт - История JS</title>
+    
+    <script type="text/javascript">
+        function format() {
+            // Получаем массив радиокнопок с именем R1
+            var rad = document.getElementsByName('R1');
+            
+            // Переменная для хранения номера выбранной задачи
+            var selectedTask = 0;
+            for (var i = 0; i < rad.length; i++) {
+                if (rad[i].checked) {
+                    selectedTask = rad[i].value;
+                    break;
+                }
+            }
+            
+            // Выполняем действие в зависимости от выбранной радиокнопки
+            if (selectedTask == "1") {
+                // 1-я задача: все нечетные абзацы текста окрасить серым цветом (через CSS-класс .color)
+                var paragraphs = document.getElementById('text-block').getElementsByTagName('p');
+                for (var j = 0; j < paragraphs.length; j++) {
+                    // j+1 — это порядковый номер абзаца (1-й, 2-й, 3-й...)
+                    if ((j + 1) % 2 !== 0) {
+                        paragraphs[j].className = "color";
+                    } else {
+                        paragraphs[j].className = ""; // сброс у четных
+                    }
+                }
+            } 
+            else if (selectedTask == "2") {
+                // 2-я задача: первые строки (элементы) каждого списка сделать размером в 28 px
+                var lists = document.getElementById('text-block').getElementsByTagName('ul');
+                for (var k = 0; k < lists.length; k++) {
+                    var firstItem = lists[k].getElementsByTagName('li')[0];
+                    if (firstItem) {
+                        firstItem.style.fontSize = "28px";
+                    }
+                }
+            } 
+            else if (selectedTask == "3") {
+                // 3-я задача: все нечетные элементы списков взять в рамку красного цвета
+                var items = document.getElementById('text-block').getElementsByTagName('li');
+                for (var m = 0; m < items.length; m++) {
+                    // m+1 — порядковый номер элемента (1-й, 2-й, 3-й...)
+                    if ((m + 1) % 2 !== 0) {
+                        items[m].style.border = "2px solid red";
+                        items[m].style.padding = "2px 5px";
+                    } else {
+                        items[m].style.border = "none";
+                    }
+                }
+            } 
+            else if (selectedTask == "4") {
+                // 4-я задача: содержимое тега span заменить на текст из диалога и раскрасить синим
+                var spans = document.getElementById('text-block').getElementsByTagName('span');
+                if (spans.length > 0) {
+                    var userText = prompt('Введите текст для замены внутри span:', 'JS / DOM');
+                    if (userText !== null) {
+                        for (var n = 0; n < spans.length; n++) {
+                            spans[n].innerHTML = userText;
+                            spans[n].style.color = "blue";
+                            spans[n].style.fontWeight = "bold";
+                        }
+                    }
+                } else {
+                    alert('Теги span не найдены в тексте!');
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="main">
+        <div id="header">
+            <h1><a href="index.html">Мой первый сайт</a></h1>
+        </div>
+ 
+        <div id="content">
+            <div id="left">
+                <h2>Навигация</h2>
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="news.html">Новости</a></li>
+                    <li><a href="contacts.html">Контакты</a></li>
+                    <li><a href="secret.html">Секрет</a></li>
+                    <li><a href="calc.html">Калькулятор</a></li>
+                    <li><a href="history.html">История JS</a></li>
+                </ul>
+                <h2>Ссылки</h2>
+                <ul>
+                    <li><a href="https://yandex.ru" target="_blank">Яндекс</a></li>
+                    <li><a href="https://google.com" target="_blank">Google</a></li>
+                </ul>
+                <h2>Авторизация</h2>
+                <form action="index.html" method="post">
+                    Пользователь:
+                    <div align="right"><input name="login" type="text"></div>
+                    Пароль:
+                    <div align="right"><input name="pwd" type="password"></div>
+                    <div align="right"><input name="ok" type="submit" value="Войти"></div>
+                </form>
+            </div>
+ 
+            <div id="right">
+                <h2>История JavaScript и DOM</h2>
+                
+                <div id="text-block">
+                    <p>В 1992 году компания Nombas (впоследствии приобретённая Openwave (англ.)) начала разработку встраиваемого скриптового языка Cmm (Симинус-минус), который, по замыслу разработчиков, должен был стать достаточно мощным, чтобы заменить макросы, сохраняя при этом схожесть с Си, чтобы разработчикам не составляло труда изучить его. Главным отличием от Си была работа с памятью.</p>
+                     
+                    <p>В новом языке всё управление памятью осуществлялось автоматически: не было необходимости создавать буферы, объявлять переменные, осуществлять преобразование типов. В остальном языки сильно походили друг на друга: в частности, Cmm поддерживал стандартные функции и операторы Си. Cmm был переименован в ScriptEase, поскольку исходное название звучало слишком негативно, а упоминание в нём Си «отпугивало» людей.</p>
+                     
+                    <p>Поскольку требования были размыты, Айка перевели в группу, ответственную за серверные продукты, где он проработал месяц, занимаясь улучшением протокола HTTP. В мае разработчик был переброшен обратно, в команду, занимающуюся клиентской частью (браузером), где он немедленно начал разрабатывать концепцию нового языка программирования. Менеджмент разработки браузера, включая Тома Пакина (Tom Paquin), Михаэля Тоя (англ.), Рика Шелла (Rick Schell), был убеждён, что Netscape должен поддерживать язык программирования, встраиваемый в HTML-код страницы.</p>
+                     
+                    <p>Несмотря на схожий с Си синтаксис, <span>JavaScript</span> по сравнению с языком Си имеет коренные отличия:</p>
+                    <ul>
+                        <li>объекты, с возможностью интроспекции;</li>
+                        <li>функции как объекты первого класса;</li>
+                        <li>автоматическое приведение типов;</li>
+                        <li>автоматическая сборка мусора;</li>
+                        <li>анонимные функции;</li>
+                    </ul>
+                     
+                    <p><span>Объектная модель документа</span> — интерфейс программирования приложений для HTML и XML-документов. Согласно DOM, документ (например, веб-страница) может быть представлен в виде дерева объектов, обладающих рядом свойств, которые позволяют производить с ним различные манипуляции:</p>
+                    <ul>
+                        <li>генерация и добавление узлов;</li>
+                        <li>получение узлов;</li>
+                        <li>изменение узлов;</li>
+                        <li>изменение связей между узлами;</li>
+                        <li>удаление узлов.</li>
+                    </ul>
+                </div>
+
+                <hr style="margin: 20px 0; border: none; border-top: 1px dotted #2a79bc;">
+                
+                <h3>Выбор операции форматирования:</h3>
+                <form name="form2" style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 5px; margin-top: 10px;">
+                    <p><input type="radio" name="R1" value="1" checked> 1-я задача (Серые нечетные абзацы)</p>
+                    <p><input type="radio" name="R1" value="2"> 2-я задача (Размер первой строки списка 28px)</p>
+                    <p><input type="radio" name="R1" value="3"> 3-я задача (Красная рамка у нечетных элементов списка)</p>
+                    <p><input type="radio" name="R1" value="4"> 4-я задача (Заменить текст в span из диалога и сделать синим)</p>
+                    
+                    <div style="margin-top: 15px;">
+                        <input type="button" value="Выполнить форматирование" onclick="format()" style="padding: 7px 15px; font-weight: bold; cursor: pointer; background-color: #2a79bc; color: #fff; border: none; border-radius: 4px;">
+                    </div>
+                </form>
+            </div>
+            <div style="clear: both;"></div>
+        </div>
+ 
+        <div id="footer">&copy; Царский Никита Сергеевич</div>
+    </div>
+</body>
+</html>
