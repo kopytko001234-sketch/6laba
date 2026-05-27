@@ -4,10 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Царский Никита Сергеевич">
-    <meta name="keywords" content="HTML, теги, ссылки">
-    <meta name="description" content="Работа каскадных таблиц">
+    <meta name="keywords" content="HTML, CSS, JavaScript, Калькулятор">
+    <meta name="description" content="Лабораторная работа 6 - Калькулятор">
     <link rel="stylesheet" href="style.css">
     <title>Мой первый простой сайт - Контакты</title>
+    
+    <script type="text/javascript">
+        function calc() {
+            // Получаем значения из полей ввода
+            var price = parseFloat(document.getElementById('price').value) || 0;
+            var count = parseInt(document.getElementById('count').value) || 0;
+            var delivery = document.getElementById('delivery').checked;
+            
+            // Считаем общую стоимость
+            var total = price * count;
+            if (delivery) {
+                total += 500; // Прибавляем 500 руб за доставку, если чекбокс активен
+            }
+            
+            // Выводим результат в поле со знаком равенства
+            document.getElementById('total').value = total + ' руб.';
+        }
+    </script>
 </head>
 <body>
     <div id="main">
@@ -40,11 +58,23 @@
             </div>
  
             <div id="right">
-                <h2>Контакты</h2>
-                <p><b>Контакты</b> — нужны для установления связи между компанией и её клиентами.</p>
-                <p>Через страницу «Контакты» можно познакомиться с собственной аудиторией и, например, получить рекламные предложения от потенциальных рекламодателей.</p>
-                <p>Таким образом, создание такой страницы помогает привлечь новых клиентов и установить долгосрочные отношения с ними.</p>
-                <p>Посетители смогут задать вопросы или запросить информацию, не покидая сайт.</p>
+                <h2>Контакты и расчет стоимости</h2>
+                <p>Вы можете связаться с нами по телефону: 8-800-555-35-35</p>
+                <hr>
+                
+                <h3>Простой калькулятор заказа</h3>
+                <form style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 5px;">
+                    <p>Цена товара (руб): <br>
+                    <input type="text" id="price" value="100" oninput="calc()"></p>
+                    
+                    <p>Количество (шт): <br>
+                    <input type="text" id="count" value="1" oninput="calc()"></p>
+                    
+                    <p><input type="checkbox" id="delivery" onchange="calc()"> Требуется доставка (+500 руб)</p>
+                    
+                    <p><b>Итого к оплате:</b> <br>
+                    <input type="text" id="total" value="100 руб." readonly style="font-weight:bold; color: #000;"></p>
+                </form>
             </div>
             <div style="clear: both;"></div>
         </div>
