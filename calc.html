@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Царский Никита Сергеевич">
+    <meta name="keywords" content="HTML, CSS, JavaScript, Калькулятор">
+    <meta name="description" content="Лабораторная работа 5 - Web-калькулятор">
+    <link rel="stylesheet" href="style.css">
+    <title>Мой первый простой сайт - Калькулятор</title>
+    
+    <script type="text/javascript">
+        // Функция сложения (+)
+        function summ() {
+            var a = parseFloat(document.form1.T1.value) || 0;
+            var b = parseFloat(document.form1.T2.value) || 0;
+            document.form1.T3.value = a + b;
+        }
+
+        // Функция вычитания (-)
+        function razn() {
+            var a = parseFloat(document.form1.T1.value) || 0;
+            var b = parseFloat(document.form1.T2.value) || 0;
+            document.form1.T3.value = a - b;
+        }
+
+        // Функция умножения (*) - Теперь называется просто и надежно
+        function umnozh() {
+            var a = parseFloat(document.form1.T1.value) || 0;
+            var b = parseFloat(document.form1.T2.value) || 0;
+            document.form1.T3.value = a * b;
+        }
+
+        // Функция деления (/)
+        function chast() {
+            var a = parseFloat(document.form1.T1.value) || 0;
+            var b = parseFloat(document.form1.T2.value) || 0;
+            if (b !== 0) {
+                document.form1.T3.value = a / b;
+            } else {
+                document.form1.T3.value = "Деление на 0!";
+            }
+        }
+
+        // Функция СЕ (очистить всё)
+        function steret() {
+            document.form1.T1.value = 0;
+            document.form1.T2.value = 0;
+            document.form1.T3.value = 0;
+            document.form1.T1.focus();
+            document.form1.T1.select();
+        }
+    </script>
+</head>
+<body>
+    <div id="main">
+        <div id="header">
+            <h1><a href="index.html">Мой первый сайт</a></h1>
+        </div>
+ 
+        <div id="content">
+            <div id="left">
+                <h2>Навигация</h2>
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="news.html">Новости</a></li>
+                    <li><a href="contacts.html">Контакты</a></li>
+                    <li><a href="secret.html">Секрет</a></li>
+                    <li><a href="calc.html">Калькулятор</a></li>
+                </ul>
+                <h2>Ссылки</h2>
+                <ul>
+                    <li><a href="https://yandex.ru" target="_blank">Яндекс</a></li>
+                    <li><a href="https://google.com" target="_blank">Google</a></li>
+                </ul>
+                <h2>Авторизация</h2>
+                <form action="index.html" method="post">
+                    Пользователь:
+                    <div align="right"><input name="login" type="text"></div>
+                    Пароль:
+                    <div align="right"><input name="pwd" type="password"></div>
+                    <div align="right"><input name="ok" type="submit" value="Войти"></div>
+                </form>
+            </div>
+ 
+            <div id="right">
+                <h2>Страница Web-калькулятор</h2>
+                <p>Данный раздел демонстрирует возможности обработки элементов экранной формы и выполнения математических вычислений на JavaScript.</p>
+                <hr>
+                
+                <h3>Инженерный калькулятор</h3>
+                <form name="form1" style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 5px; max-width: 350px;">
+                    <p>Число 1: <br>
+                    <input type="text" name="T1" value="0" style="width: 100%; padding: 5px; box-sizing: border-box;"></p>
+                    
+                    <p>Число 2: <br>
+                    <input type="text" name="T2" value="0" style="width: 100%; padding: 5px; box-sizing: border-box;"></p>
+                    
+                    <p>Результат: <br>
+                    <input type="text" name="T3" value="0" readonly style="width: 100%; padding: 5px; font-weight: bold; background-color: #eee; color: #000; box-sizing: border-box;"></p>
+                    
+                    <div style="margin-top: 15px;">
+                        <input type="button" value="  +  " onclick="summ()" style="padding: 5px 12px; cursor: pointer; font-weight: bold; margin-right: 4px;">
+                        <input type="button" value="  -  " onclick="razn()" style="padding: 5px 12px; cursor: pointer; font-weight: bold; margin-right: 4px;">
+                        <input type="button" value="  * " onclick="umnozh()" style="padding: 5px 12px; cursor: pointer; font-weight: bold; margin-right: 4px;">
+                        <input type="button" value="  /  " onclick="chast()" style="padding: 5px 12px; cursor: pointer; font-weight: bold;">
+                    </div>
+                    
+                    <div style="margin-top: 12px;">
+                        <input type="button" value="CE (очистить)" onclick="steret()" style="padding: 6px 15px; cursor: pointer; background-color: #ff9999; font-weight: bold; width: 100%; box-sizing: border-box;">
+                    </div>
+                </form>
+            </div>
+            <div style="clear: both;"></div>
+        </div>
+ 
+        <div id="footer">&copy; Царский Никита Сергеевич</div>
+    </div>
+</body>
+</html>
