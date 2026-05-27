@@ -12,27 +12,52 @@
     <script type="text/javascript">
         function colors() {
             var color = document.getElementsByName('D1')[0];
-            
-            // Меняем цвет фона страницы
             document.body.style.backgroundColor = color.value;
-            
-            // Если выбрана Темная тема, меняем цвет текста для читаемости, иначе возвращаем обычный
             if (color.value == "#333333") {
                 document.body.style.color = "#fff";
             } else {
                 document.body.style.color = "#222";
             }
-            
             var opt = document.getElementsByTagName('option');
             var text = opt[color.selectedIndex].innerHTML;
             var h3 = document.getElementsByTagName('h3')[0];
-            
-            // Обновляем заголовок 3-го уровня
             h3.innerHTML = 'Тема: ' + text;
+        }
+
+        // Функция открытия окна регистрации
+        function register() {
+            var modal = document.getElementById('modal');
+            modal.style.display = 'block';
+        }
+
+        // Функция закрытия окна регистрации
+        function post() {
+            var modal = document.getElementById('modal');
+            // Здесь может быть код обработки введенной информации
+            modal.style.display = 'none';
         }
     </script>
 </head>
 <body>
+
+    <div id="modal">
+        <form action="" method="post" onsubmit="return false;">
+            <h3>Регистрация</h3>
+            <br>
+            Логин:< br>
+            <input name="reg_login" type="text">
+            <br>
+            Пароль:< br>
+            <input name="reg_pwd" type="password">
+            <br>
+            e-mail:< br>
+            <input name="reg_email" type="text">
+            <br><br>
+            <input class="button" type="button" value="Записать" onclick="post()">
+            <input class="button" type="button" value="Отмена" onclick="post()">
+        </form>
+    </div>
+
     <div id="main">
         <div id="header">
             <h1><a href="index.html">Мой первый сайт</a></h1>
@@ -57,13 +82,17 @@
                     <li><a href="https://google.com" target="_blank">Google</a></li>
                 </ul>
                 <h2>Авторизация</h2>
-                <form action="index.html" method="post">
+                <form action="index.html" method="post" style="margin-bottom: 10px;">
                     Пользователь:
-                    <div align="right"><input name="login" type="text"></div>
+                    <div align="right"><input name="login" type="text" style="width: 140px;"></div>
                     Пароль:
-                    <div align="right"><input name="pwd" type="password"></div>
-                    <div align="right"><input name="ok" type="submit" value="Войти"></div>
+                    <div align="right"><input name="pwd" type="password" style="width: 140px;"></div>
+                    <div align="right" style="margin-top: 5px;"><input name="ok" type="submit" value="Войти"></div>
                 </form>
+
+                <div align="center" style="padding: 0 10px;">
+                    <input type="button" value="Регистрация" onclick="register()" style="width: 100%; padding: 5px; font-weight: bold; cursor: pointer; background-color: #FF5500; color: #fff; border: none; border-radius: 4px;">
+                </div>
             </div>
  
             <div id="right">
